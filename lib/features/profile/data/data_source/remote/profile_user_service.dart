@@ -15,8 +15,4 @@ abstract class ProfileUserService {
   @GET('users')
   Future<UserData> getCurrentUser(
       {@Header('Authorization') required String token});
-
-  // @POST('users')
-  // Future<UserModel> updateUser(
-  //     {@Header('Authorization') required String token});
 }

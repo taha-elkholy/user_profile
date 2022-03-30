@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_profile/core/di/injector/injector.dart';
 import 'package:user_profile/core/helpers/helpers.dart';
+import 'package:user_profile/core/widgets/app_elevated_button.dart';
 import 'package:user_profile/core/widgets/app_progress_indicator.dart';
 import 'package:user_profile/features/auth/domain/entities/user.dart';
 import 'package:user_profile/features/auth/presentation/pages/login_screen.dart';
@@ -9,6 +10,7 @@ import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/pr
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_states.dart';
 import 'package:user_profile/features/profile/presentation/widgets/network_image.dart';
 import 'package:user_profile/features/profile/presentation/widgets/table_text.dart';
+import 'package:user_profile/features/update_profile/presentation/pages/update_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -103,6 +105,20 @@ class ProfileBody extends StatelessWidget {
                 ]),
               ],
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            AppElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(
+                          builder: (context) =>
+                              UpdateProfileScreen(user: user)))
+                      .then((_) {
+                    BlocProvider.of<ProfileCubit>(context).getUser();
+                  });
+                },
+                text: 'Update')
           ],
         ),
       ),

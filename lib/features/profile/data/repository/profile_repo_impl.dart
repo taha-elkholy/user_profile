@@ -33,7 +33,7 @@ class ProfileRepoImpl extends ProfileRepository {
         return left(const Failure(message: 'No Token'));
       }
     } catch (error) {
-      return left(const Failure(message: 'Get Startup Error'));
+      return left(const Failure(message: 'Get User Error'));
     }
   }
 }

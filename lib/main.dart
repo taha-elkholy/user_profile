@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_profile/core/di/injector/injector.dart';
 import 'package:user_profile/core/style/themes.dart';
-import 'package:user_profile/features/auth/presentation/pages/login_screen.dart';
+import 'package:user_profile/features/startup/presentation/pages/startup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appThemeLight,
-      home: const LoginScreen(),
+      home: const StartupScreen(),
     );
   }
 }

@@ -26,8 +26,10 @@ class _$ProfileStatesTearOff {
     return const ProfileLoadingState();
   }
 
-  ProfileLoadedState loaded() {
-    return const ProfileLoadedState();
+  ProfileLoadedState loaded({required User user}) {
+    return ProfileLoadedState(
+      user: user,
+    );
   }
 
   ProfileErrorState error({required String error}) {
@@ -60,7 +62,7 @@ mixin _$ProfileStates {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -71,7 +73,7 @@ mixin _$ProfileStates {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -82,7 +84,7 @@ mixin _$ProfileStates {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -186,7 +188,7 @@ class _$ProfileInitialState implements ProfileInitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -200,7 +202,7 @@ class _$ProfileInitialState implements ProfileInitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -214,7 +216,7 @@ class _$ProfileInitialState implements ProfileInitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -321,7 +323,7 @@ class _$ProfileLoadingState implements ProfileLoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -335,7 +337,7 @@ class _$ProfileLoadingState implements ProfileLoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -349,7 +351,7 @@ class _$ProfileLoadingState implements ProfileLoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -418,6 +420,7 @@ abstract class $ProfileLoadedStateCopyWith<$Res> {
   factory $ProfileLoadedStateCopyWith(
           ProfileLoadedState value, $Res Function(ProfileLoadedState) then) =
       _$ProfileLoadedStateCopyWithImpl<$Res>;
+  $Res call({User user});
 }
 
 /// @nodoc
@@ -430,39 +433,62 @@ class _$ProfileLoadedStateCopyWithImpl<$Res>
 
   @override
   ProfileLoadedState get _value => super._value as ProfileLoadedState;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(ProfileLoadedState(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ProfileLoadedState implements ProfileLoadedState {
-  const _$ProfileLoadedState();
+  const _$ProfileLoadedState({required this.user});
+
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'ProfileStates.loaded()';
+    return 'ProfileStates.loaded(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ProfileLoadedState);
+        (other.runtimeType == runtimeType &&
+            other is ProfileLoadedState &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  $ProfileLoadedStateCopyWith<ProfileLoadedState> get copyWith =>
+      _$ProfileLoadedStateCopyWithImpl<ProfileLoadedState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
     required TResult Function(String error) logoutError,
   }) {
-    return loaded();
+    return loaded(user);
   }
 
   @override
@@ -470,13 +496,13 @@ class _$ProfileLoadedState implements ProfileLoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
     TResult Function(String error)? logoutError,
   }) {
-    return loaded?.call();
+    return loaded?.call(user);
   }
 
   @override
@@ -484,7 +510,7 @@ class _$ProfileLoadedState implements ProfileLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -492,7 +518,7 @@ class _$ProfileLoadedState implements ProfileLoadedState {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(user);
     }
     return orElse();
   }
@@ -545,7 +571,12 @@ class _$ProfileLoadedState implements ProfileLoadedState {
 }
 
 abstract class ProfileLoadedState implements ProfileStates {
-  const factory ProfileLoadedState() = _$ProfileLoadedState;
+  const factory ProfileLoadedState({required User user}) = _$ProfileLoadedState;
+
+  User get user;
+  @JsonKey(ignore: true)
+  $ProfileLoadedStateCopyWith<ProfileLoadedState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -615,7 +646,7 @@ class _$ProfileErrorState implements ProfileErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -629,7 +660,7 @@ class _$ProfileErrorState implements ProfileErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -643,7 +674,7 @@ class _$ProfileErrorState implements ProfileErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -758,7 +789,7 @@ class _$ProfileLogoutLoadingState implements ProfileLogoutLoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -772,7 +803,7 @@ class _$ProfileLogoutLoadingState implements ProfileLogoutLoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -786,7 +817,7 @@ class _$ProfileLogoutLoadingState implements ProfileLogoutLoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -894,7 +925,7 @@ class _$ProfileLogoutLoadedState implements ProfileLogoutLoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -908,7 +939,7 @@ class _$ProfileLogoutLoadedState implements ProfileLogoutLoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -922,7 +953,7 @@ class _$ProfileLogoutLoadedState implements ProfileLogoutLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -1054,7 +1085,7 @@ class _$ProfileLogoutErrorState implements ProfileLogoutErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String error) error,
     required TResult Function() logoutLoading,
     required TResult Function() logoutLoaded,
@@ -1068,7 +1099,7 @@ class _$ProfileLogoutErrorState implements ProfileLogoutErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,
@@ -1082,7 +1113,7 @@ class _$ProfileLogoutErrorState implements ProfileLogoutErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String error)? error,
     TResult Function()? logoutLoading,
     TResult Function()? logoutLoaded,

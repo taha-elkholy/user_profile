@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_profile/core/di/injector/injector.dart';
 import 'package:user_profile/core/helpers/helpers.dart';
 import 'package:user_profile/core/widgets/app_progress_indicator.dart';
+import 'package:user_profile/features/auth/domain/entities/user.dart';
 import 'package:user_profile/features/auth/presentation/pages/login_screen.dart';
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_cubit.dart';
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_states.dart';
+import 'package:user_profile/features/profile/presentation/widgets/network_image.dart';
+import 'package:user_profile/features/profile/presentation/widgets/table_text.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -15,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<ProfileCubit>(),
+      create: (context) => getIt<ProfileCubit>()..getUser(),
       child: BlocConsumer<ProfileCubit, ProfileStates>(
         listener: (context, state) {
           if (state is ProfileLogoutLoadedState) {
@@ -38,13 +41,70 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ],
             ),
-            body: state.maybeWhen(
-                loading: () => const AppProgressIndicator(),
-                logoutLoading: () => const AppProgressIndicator(),
-                orElse: () => Container(),
+            body: state.mapOrNull(
+              loading: (_) => const AppProgressIndicator(),
+              logoutLoading: (_) => const AppProgressIndicator(),
+              loaded: (loadedState) => ProfileBody(user: loadedState.user),
+              error: (errorState) => Center(
+                child: Text(errorState.error),
+              ),
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class ProfileBody extends StatelessWidget {
+  const ProfileBody({Key? key, required this.user}) : super(key: key);
+  final User user;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: MyNetworkImage(
+                url: user.image,
+                radius: 100,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Table(
+              columnWidths: const {
+                0: FlexColumnWidth(1),
+                1: FlexColumnWidth(1),
+              },
+              children: [
+                TableRow(children: [
+                  const TableText(text: 'User Name'),
+                  TableText(text: user.name),
+                ]),
+                TableRow(children: [
+                  const TableText(text: 'Job Title'),
+                  TableText(text: user.jobTitle),
+                ]),
+                TableRow(children: [
+                  const TableText(text: 'Phone'),
+                  TableText(text: user.phone),
+                ]),
+                TableRow(children: [
+                  const TableText(text: 'Email'),
+                  TableText(text: user.email),
+                ]),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

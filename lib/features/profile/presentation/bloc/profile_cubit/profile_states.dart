@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:user_profile/features/auth/domain/entities/user.dart';
 
 part 'profile_states.freezed.dart';
 
@@ -8,7 +9,7 @@ class ProfileStates with _$ProfileStates {
 
   const factory ProfileStates.loading() = ProfileLoadingState;
 
-  const factory ProfileStates.loaded() = ProfileLoadedState;
+  const factory ProfileStates.loaded({required User user}) = ProfileLoadedState;
 
   const factory ProfileStates.error({required String error}) =
       ProfileErrorState;

@@ -37,6 +37,22 @@ class _$UpdateProfileStatesTearOff {
       error: error,
     );
   }
+
+  UploadImageLoadingState uploadImageLoading() {
+    return const UploadImageLoadingState();
+  }
+
+  UploadImageLoadedState uploadImageLoaded({required String imageUrl}) {
+    return UploadImageLoadedState(
+      imageUrl: imageUrl,
+    );
+  }
+
+  UploadImageErrorState uploadImageError({required String error}) {
+    return UploadImageErrorState(
+      error: error,
+    );
+  }
 }
 
 /// @nodoc
@@ -50,6 +66,9 @@ mixin _$UpdateProfileStates {
     required TResult Function() loading,
     required TResult Function(User user) loaded,
     required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +77,9 @@ mixin _$UpdateProfileStates {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +88,9 @@ mixin _$UpdateProfileStates {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +100,9 @@ mixin _$UpdateProfileStates {
     required TResult Function(UpdateProfileLoadingState value) loading,
     required TResult Function(UpdateProfileLoadedState value) loaded,
     required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +111,9 @@ mixin _$UpdateProfileStates {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +122,9 @@ mixin _$UpdateProfileStates {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,6 +194,9 @@ class _$UpdateProfileInitialState implements UpdateProfileInitialState {
     required TResult Function() loading,
     required TResult Function(User user) loaded,
     required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
   }) {
     return initial();
   }
@@ -171,6 +208,9 @@ class _$UpdateProfileInitialState implements UpdateProfileInitialState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
   }) {
     return initial?.call();
   }
@@ -182,6 +222,9 @@ class _$UpdateProfileInitialState implements UpdateProfileInitialState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -197,6 +240,9 @@ class _$UpdateProfileInitialState implements UpdateProfileInitialState {
     required TResult Function(UpdateProfileLoadingState value) loading,
     required TResult Function(UpdateProfileLoadedState value) loaded,
     required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
   }) {
     return initial(this);
   }
@@ -208,6 +254,9 @@ class _$UpdateProfileInitialState implements UpdateProfileInitialState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
   }) {
     return initial?.call(this);
   }
@@ -219,6 +268,9 @@ class _$UpdateProfileInitialState implements UpdateProfileInitialState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -279,6 +331,9 @@ class _$UpdateProfileLoadingState implements UpdateProfileLoadingState {
     required TResult Function() loading,
     required TResult Function(User user) loaded,
     required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
   }) {
     return loading();
   }
@@ -290,6 +345,9 @@ class _$UpdateProfileLoadingState implements UpdateProfileLoadingState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
   }) {
     return loading?.call();
   }
@@ -301,6 +359,9 @@ class _$UpdateProfileLoadingState implements UpdateProfileLoadingState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -316,6 +377,9 @@ class _$UpdateProfileLoadingState implements UpdateProfileLoadingState {
     required TResult Function(UpdateProfileLoadingState value) loading,
     required TResult Function(UpdateProfileLoadedState value) loaded,
     required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
   }) {
     return loading(this);
   }
@@ -327,6 +391,9 @@ class _$UpdateProfileLoadingState implements UpdateProfileLoadingState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
   }) {
     return loading?.call(this);
   }
@@ -338,6 +405,9 @@ class _$UpdateProfileLoadingState implements UpdateProfileLoadingState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -422,6 +492,9 @@ class _$UpdateProfileLoadedState implements UpdateProfileLoadedState {
     required TResult Function() loading,
     required TResult Function(User user) loaded,
     required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
   }) {
     return loaded(user);
   }
@@ -433,6 +506,9 @@ class _$UpdateProfileLoadedState implements UpdateProfileLoadedState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
   }) {
     return loaded?.call(user);
   }
@@ -444,6 +520,9 @@ class _$UpdateProfileLoadedState implements UpdateProfileLoadedState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -459,6 +538,9 @@ class _$UpdateProfileLoadedState implements UpdateProfileLoadedState {
     required TResult Function(UpdateProfileLoadingState value) loading,
     required TResult Function(UpdateProfileLoadedState value) loaded,
     required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
   }) {
     return loaded(this);
   }
@@ -470,6 +552,9 @@ class _$UpdateProfileLoadedState implements UpdateProfileLoadedState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
   }) {
     return loaded?.call(this);
   }
@@ -481,6 +566,9 @@ class _$UpdateProfileLoadedState implements UpdateProfileLoadedState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -570,6 +658,9 @@ class _$UpdateProfileErrorState implements UpdateProfileErrorState {
     required TResult Function() loading,
     required TResult Function(User user) loaded,
     required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
   }) {
     return error(this.error);
   }
@@ -581,6 +672,9 @@ class _$UpdateProfileErrorState implements UpdateProfileErrorState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
   }) {
     return error?.call(this.error);
   }
@@ -592,6 +686,9 @@ class _$UpdateProfileErrorState implements UpdateProfileErrorState {
     TResult Function()? loading,
     TResult Function(User user)? loaded,
     TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -607,6 +704,9 @@ class _$UpdateProfileErrorState implements UpdateProfileErrorState {
     required TResult Function(UpdateProfileLoadingState value) loading,
     required TResult Function(UpdateProfileLoadedState value) loaded,
     required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
   }) {
     return error(this);
   }
@@ -618,6 +718,9 @@ class _$UpdateProfileErrorState implements UpdateProfileErrorState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
   }) {
     return error?.call(this);
   }
@@ -629,6 +732,9 @@ class _$UpdateProfileErrorState implements UpdateProfileErrorState {
     TResult Function(UpdateProfileLoadingState value)? loading,
     TResult Function(UpdateProfileLoadedState value)? loaded,
     TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -645,5 +751,472 @@ abstract class UpdateProfileErrorState implements UpdateProfileStates {
   String get error;
   @JsonKey(ignore: true)
   $UpdateProfileErrorStateCopyWith<UpdateProfileErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UploadImageLoadingStateCopyWith<$Res> {
+  factory $UploadImageLoadingStateCopyWith(UploadImageLoadingState value,
+          $Res Function(UploadImageLoadingState) then) =
+      _$UploadImageLoadingStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UploadImageLoadingStateCopyWithImpl<$Res>
+    extends _$UpdateProfileStatesCopyWithImpl<$Res>
+    implements $UploadImageLoadingStateCopyWith<$Res> {
+  _$UploadImageLoadingStateCopyWithImpl(UploadImageLoadingState _value,
+      $Res Function(UploadImageLoadingState) _then)
+      : super(_value, (v) => _then(v as UploadImageLoadingState));
+
+  @override
+  UploadImageLoadingState get _value => super._value as UploadImageLoadingState;
+}
+
+/// @nodoc
+
+class _$UploadImageLoadingState implements UploadImageLoadingState {
+  const _$UploadImageLoadingState();
+
+  @override
+  String toString() {
+    return 'UpdateProfileStates.uploadImageLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UploadImageLoadingState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) loaded,
+    required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
+  }) {
+    return uploadImageLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? loaded,
+    TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
+  }) {
+    return uploadImageLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? loaded,
+    TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageLoading != null) {
+      return uploadImageLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateProfileInitialState value) initial,
+    required TResult Function(UpdateProfileLoadingState value) loading,
+    required TResult Function(UpdateProfileLoadedState value) loaded,
+    required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
+  }) {
+    return uploadImageLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UpdateProfileInitialState value)? initial,
+    TResult Function(UpdateProfileLoadingState value)? loading,
+    TResult Function(UpdateProfileLoadedState value)? loaded,
+    TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
+  }) {
+    return uploadImageLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateProfileInitialState value)? initial,
+    TResult Function(UpdateProfileLoadingState value)? loading,
+    TResult Function(UpdateProfileLoadedState value)? loaded,
+    TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageLoading != null) {
+      return uploadImageLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadImageLoadingState implements UpdateProfileStates {
+  const factory UploadImageLoadingState() = _$UploadImageLoadingState;
+}
+
+/// @nodoc
+abstract class $UploadImageLoadedStateCopyWith<$Res> {
+  factory $UploadImageLoadedStateCopyWith(UploadImageLoadedState value,
+          $Res Function(UploadImageLoadedState) then) =
+      _$UploadImageLoadedStateCopyWithImpl<$Res>;
+  $Res call({String imageUrl});
+}
+
+/// @nodoc
+class _$UploadImageLoadedStateCopyWithImpl<$Res>
+    extends _$UpdateProfileStatesCopyWithImpl<$Res>
+    implements $UploadImageLoadedStateCopyWith<$Res> {
+  _$UploadImageLoadedStateCopyWithImpl(UploadImageLoadedState _value,
+      $Res Function(UploadImageLoadedState) _then)
+      : super(_value, (v) => _then(v as UploadImageLoadedState));
+
+  @override
+  UploadImageLoadedState get _value => super._value as UploadImageLoadedState;
+
+  @override
+  $Res call({
+    Object? imageUrl = freezed,
+  }) {
+    return _then(UploadImageLoadedState(
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadImageLoadedState implements UploadImageLoadedState {
+  const _$UploadImageLoadedState({required this.imageUrl});
+
+  @override
+  final String imageUrl;
+
+  @override
+  String toString() {
+    return 'UpdateProfileStates.uploadImageLoaded(imageUrl: $imageUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UploadImageLoadedState &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageUrl));
+
+  @JsonKey(ignore: true)
+  @override
+  $UploadImageLoadedStateCopyWith<UploadImageLoadedState> get copyWith =>
+      _$UploadImageLoadedStateCopyWithImpl<UploadImageLoadedState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) loaded,
+    required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
+  }) {
+    return uploadImageLoaded(imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? loaded,
+    TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
+  }) {
+    return uploadImageLoaded?.call(imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? loaded,
+    TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageLoaded != null) {
+      return uploadImageLoaded(imageUrl);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateProfileInitialState value) initial,
+    required TResult Function(UpdateProfileLoadingState value) loading,
+    required TResult Function(UpdateProfileLoadedState value) loaded,
+    required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
+  }) {
+    return uploadImageLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UpdateProfileInitialState value)? initial,
+    TResult Function(UpdateProfileLoadingState value)? loading,
+    TResult Function(UpdateProfileLoadedState value)? loaded,
+    TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
+  }) {
+    return uploadImageLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateProfileInitialState value)? initial,
+    TResult Function(UpdateProfileLoadingState value)? loading,
+    TResult Function(UpdateProfileLoadedState value)? loaded,
+    TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageLoaded != null) {
+      return uploadImageLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadImageLoadedState implements UpdateProfileStates {
+  const factory UploadImageLoadedState({required String imageUrl}) =
+      _$UploadImageLoadedState;
+
+  String get imageUrl;
+  @JsonKey(ignore: true)
+  $UploadImageLoadedStateCopyWith<UploadImageLoadedState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UploadImageErrorStateCopyWith<$Res> {
+  factory $UploadImageErrorStateCopyWith(UploadImageErrorState value,
+          $Res Function(UploadImageErrorState) then) =
+      _$UploadImageErrorStateCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+/// @nodoc
+class _$UploadImageErrorStateCopyWithImpl<$Res>
+    extends _$UpdateProfileStatesCopyWithImpl<$Res>
+    implements $UploadImageErrorStateCopyWith<$Res> {
+  _$UploadImageErrorStateCopyWithImpl(
+      UploadImageErrorState _value, $Res Function(UploadImageErrorState) _then)
+      : super(_value, (v) => _then(v as UploadImageErrorState));
+
+  @override
+  UploadImageErrorState get _value => super._value as UploadImageErrorState;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(UploadImageErrorState(
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadImageErrorState implements UploadImageErrorState {
+  const _$UploadImageErrorState({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'UpdateProfileStates.uploadImageError(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UploadImageErrorState &&
+            const DeepCollectionEquality().equals(other.error, error));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  $UploadImageErrorStateCopyWith<UploadImageErrorState> get copyWith =>
+      _$UploadImageErrorStateCopyWithImpl<UploadImageErrorState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) loaded,
+    required TResult Function(String error) error,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String imageUrl) uploadImageLoaded,
+    required TResult Function(String error) uploadImageError,
+  }) {
+    return uploadImageError(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? loaded,
+    TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
+  }) {
+    return uploadImageError?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? loaded,
+    TResult Function(String error)? error,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String imageUrl)? uploadImageLoaded,
+    TResult Function(String error)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageError != null) {
+      return uploadImageError(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateProfileInitialState value) initial,
+    required TResult Function(UpdateProfileLoadingState value) loading,
+    required TResult Function(UpdateProfileLoadedState value) loaded,
+    required TResult Function(UpdateProfileErrorState value) error,
+    required TResult Function(UploadImageLoadingState value) uploadImageLoading,
+    required TResult Function(UploadImageLoadedState value) uploadImageLoaded,
+    required TResult Function(UploadImageErrorState value) uploadImageError,
+  }) {
+    return uploadImageError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UpdateProfileInitialState value)? initial,
+    TResult Function(UpdateProfileLoadingState value)? loading,
+    TResult Function(UpdateProfileLoadedState value)? loaded,
+    TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
+  }) {
+    return uploadImageError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateProfileInitialState value)? initial,
+    TResult Function(UpdateProfileLoadingState value)? loading,
+    TResult Function(UpdateProfileLoadedState value)? loaded,
+    TResult Function(UpdateProfileErrorState value)? error,
+    TResult Function(UploadImageLoadingState value)? uploadImageLoading,
+    TResult Function(UploadImageLoadedState value)? uploadImageLoaded,
+    TResult Function(UploadImageErrorState value)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageError != null) {
+      return uploadImageError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadImageErrorState implements UpdateProfileStates {
+  const factory UploadImageErrorState({required String error}) =
+      _$UploadImageErrorState;
+
+  String get error;
+  @JsonKey(ignore: true)
+  $UploadImageErrorStateCopyWith<UploadImageErrorState> get copyWith =>
       throw _privateConstructorUsedError;
 }

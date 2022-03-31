@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:user_profile/core/widgets/app_progress_indicator.dart';
 
@@ -6,17 +7,21 @@ class MyNetworkImage extends StatelessWidget {
   const MyNetworkImage({
     Key? key,
     required this.url,
-    this.radius,
   }) : super(key: key);
   final String url;
-  final double? radius;
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius ?? 60,
-      backgroundColor: Colors.white,
+    return Container(
+      width: 120,
+      height: 120,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(60),
+        color: Colors.white,
+      ),
       child: CachedNetworkImage(
+        fit: BoxFit.cover,
         imageUrl: url,
         placeholder: (context, url) => const SizedBox(
           width: 20,
@@ -30,6 +35,8 @@ class MyNetworkImage extends StatelessWidget {
 
   Widget _placeholder() {
     return const Image(
-        image: AssetImage('assets/images/user_placeholder.jpg'),fit: BoxFit.cover,);
+      image: AssetImage('assets/images/user_placeholder.jpg'),
+      fit: BoxFit.cover,
+    );
   }
 }

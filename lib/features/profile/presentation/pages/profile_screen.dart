@@ -75,7 +75,6 @@ class ProfileBody extends StatelessWidget {
             Center(
               child: MyNetworkImage(
                 url: user.image,
-                radius: 100,
               ),
             ),
             const SizedBox(

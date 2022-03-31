@@ -14,4 +14,12 @@ class UpdateProfileStates with _$UpdateProfileStates {
   const factory UpdateProfileStates.error({required String error}) =
   UpdateProfileErrorState;
 
+  // upload image states
+  const factory UpdateProfileStates.uploadImageLoading() = UploadImageLoadingState;
+
+  const factory UpdateProfileStates.uploadImageLoaded({required String imageUrl}) = UploadImageLoadedState;
+
+  const factory UpdateProfileStates.uploadImageError({required String error}) =
+  UploadImageErrorState;
+
 }

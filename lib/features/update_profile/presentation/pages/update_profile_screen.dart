@@ -1,12 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:user_profile/core/di/injector/injector.dart';
 import 'package:user_profile/core/helpers/helpers.dart';
 import 'package:user_profile/core/widgets/app_elevated_button.dart';
 import 'package:user_profile/core/widgets/app_progress_indicator.dart';
 import 'package:user_profile/core/widgets/app_text_form_field.dart';
 import 'package:user_profile/features/auth/domain/entities/user.dart';
-import 'package:user_profile/features/profile/presentation/pages/profile_screen.dart';
 import 'package:user_profile/features/profile/presentation/widgets/network_image.dart';
 import 'package:user_profile/features/update_profile/presentation/bloc/update_profile_cubit/update_profile_cubit.dart';
 import 'package:user_profile/features/update_profile/presentation/bloc/update_profile_cubit/update_profile_states.dart';
@@ -46,6 +48,8 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
   late TextEditingController phoneController;
   late TextEditingController jobTitleController;
 
+  File? userImage;
+
   @override
   void initState() {
     nameController = TextEditingController(
@@ -62,6 +66,7 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
     nameController.dispose();
     phoneController.dispose();
     jobTitleController.dispose();
+    userImage = null;
     super.dispose();
   }
 
@@ -79,13 +84,28 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
             Stack(
               alignment: Alignment.bottomRight,
               children: [
-                MyNetworkImage(
-                  url: widget.user.image,
-                  radius: 100,
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: StatefulBuilder(builder: (context, innerState) {
+                    return (userImage != null)
+                        ? Container(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              image: DecorationImage(
+                                  image: Image.file(userImage!).image,
+                                  fit: BoxFit.cover),
+                            ),
+                          )
+                        : MyNetworkImage(
+                            url: widget.user.image,
+                          );
+                  }),
                 ),
                 IconButton(
                     onPressed: () {
-                      // todo upload image
+                      pickImage();
                     },
                     icon: const Icon(Icons.camera_alt_outlined))
               ],
@@ -142,7 +162,17 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
                 create: (context) => getIt<UpdateProfileCubit>(),
                 child: BlocConsumer<UpdateProfileCubit, UpdateProfileStates>(
                   listener: (context, state) {
-                    state.whenOrNull(error: (error) {
+                    state.whenOrNull(uploadImageError: (error) {
+                      showSnackBar(
+                          context: context, content: 'Upload Image Error');
+                    }, uploadImageLoaded: (url) {
+                      BlocProvider.of<UpdateProfileCubit>(context).updateUser(
+                          widget.user,
+                          name: nameController.text.trim(),
+                          phone: phoneController.text.trim(),
+                          jobTitle: jobTitleController.text.trim(),
+                          image: url);
+                    }, error: (error) {
                       showSnackBar(
                           context: context, content: 'Update User Error');
                     }, loaded: (user) {
@@ -153,16 +183,17 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
                     return state.maybeWhen(
                         loading: () => const AppProgressIndicator(),
                         loaded: (_) => const AppProgressIndicator(),
+                        uploadImageLoading: () => const AppProgressIndicator(),
+                        uploadImageLoaded: (_) => const AppProgressIndicator(),
                         orElse: () {
                           return AppElevatedButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   FocusManager.instance.primaryFocus?.unfocus();
-                                  BlocProvider.of<UpdateProfileCubit>(context)
-                                      .updateUser(widget.user,
-                                          name: nameController.text,
-                                          phone: phoneController.text,
-                                          jobTitle: jobTitleController.text);
+                                  if (userImage != null) {
+                                    BlocProvider.of<UpdateProfileCubit>(context)
+                                        .uploadImage(imageFile: userImage!);
+                                  }
                                 }
                               },
                               text: 'Submit');
@@ -173,5 +204,18 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
         ),
       ),
     );
+  }
+
+  Future<void> pickImage() async {
+    final ImagePicker _picker = ImagePicker();
+    // Capture a photo
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        userImage = File(pickedFile.path);
+      });
+    }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:user_profile/core/failure/failure.dart';
 import 'package:user_profile/features/auth/domain/entities/user.dart';
@@ -5,4 +7,6 @@ import 'package:user_profile/features/update_profile/domain/use_case/update_user
 
 abstract class UpdateProfileRepository {
   Future<Either<Failure, User>> updateUserData(UpdatedUser user);
+
+  Future<Either<Failure, String>> uploadImage(File imageFile);
 }

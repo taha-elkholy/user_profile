@@ -77,11 +77,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 30,
-                    ),
                     CircleAvatar(
-                      radius: 50,
+                      radius: 80,
                       backgroundColor: Colors.white,
                       backgroundImage: const Image(
                         image: AssetImage(
@@ -91,14 +88,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ).image,
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
                         'Register',
                         textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     const SizedBox(
@@ -117,7 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return null;
                             },
                             inputType: TextInputType.name,
-                            hint: 'User Name',
+                            label: 'User Name',
                             icon: Icons.person,
                           ),
                           const SizedBox(
@@ -132,7 +129,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return null;
                             },
                             inputType: TextInputType.phone,
-                            hint: 'Phone',
+                            label: 'Phone',
                             icon: Icons.phone,
                           ),
                           const SizedBox(
@@ -148,7 +145,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return null;
                             },
                             inputType: TextInputType.emailAddress,
-                            hint: 'Email',
+                            label: 'Email',
                             icon: Icons.email,
                           ),
                           const SizedBox(
@@ -165,7 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       return null;
                                     },
                                     inputType: TextInputType.visiblePassword,
-                                    hint: 'Password',
+                                    label: 'Password',
                                     icon: Icons.lock,
                                     obscureText: !_isPasswordShown,
                                     suffixIcon: _isPasswordShown
@@ -191,7 +188,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       return null;
                                     },
                                     inputType: TextInputType.visiblePassword,
-                                    hint: 'Password Confirmation',
+                                    label: 'Password Confirmation',
                                     icon: Icons.lock,
                                     obscureText: !_isPasswordConfirmationShown,
                                     suffixIcon: _isPasswordConfirmationShown
@@ -247,7 +244,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Text(
                         'Already Have Account? Login',
                         textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       onPressed: () {
                         navigateAndFinish(

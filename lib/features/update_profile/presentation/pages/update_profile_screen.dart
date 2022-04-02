@@ -123,7 +123,7 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
               },
               icon: Icons.person,
               inputType: TextInputType.name,
-              hint: 'User Name',
+              label: 'User Name',
             ),
             const SizedBox(
               height: 20,
@@ -138,7 +138,7 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
               },
               icon: Icons.phone,
               inputType: TextInputType.phone,
-              hint: 'Phone Number',
+              label: 'Phone Number',
             ),
             const SizedBox(
               height: 20,
@@ -153,7 +153,7 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
               },
               icon: Icons.apartment_rounded,
               inputType: TextInputType.text,
-              hint: 'Job Title',
+              label: 'Job Title',
             ),
             const SizedBox(
               height: 30,

@@ -9,7 +9,6 @@ import 'package:user_profile/features/auth/presentation/pages/login_screen.dart'
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_cubit.dart';
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_states.dart';
 import 'package:user_profile/features/profile/presentation/widgets/network_image.dart';
-import 'package:user_profile/features/profile/presentation/widgets/table_text.dart';
 import 'package:user_profile/features/update_profile/presentation/pages/update_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -32,11 +31,16 @@ class ProfileScreen extends StatelessWidget {
             appBar: AppBar(
               title: const Text(
                 'profile',
-                style: TextStyle(color: Colors.deepOrange),
+                style: TextStyle(color: Colors.black),
               ),
               actions: [
-                TextButton(
-                  child: const Text('Logout'),
+                IconButton(
+                  icon: const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Image(
+                        image: AssetImage('assets/icons/logout.png'),
+                      )),
                   onPressed: () {
                     BlocProvider.of<ProfileCubit>(context).logout();
                   },
@@ -72,36 +76,144 @@ class ProfileBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: MyNetworkImage(
-                url: user.image,
+            SizedBox(
+              height: 200,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 150,
+                    child: Card(
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: const Image(
+                        image: AssetImage('assets/images/bg.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          border: Border.all(color: Colors.white, width: 4)),
+                      child: MyNetworkImage(
+                        url: user.image,
+                      ),
+                    ),
+                  ),
+                ],
               ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  user.name,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3!
+                      .copyWith(color: Colors.black),
+                ),
+                const SizedBox(width: 10),
+                const Icon(
+                  Icons.check_circle,
+                  color: Colors.blue,
+                  size: 20,
+                )
+              ],
             ),
             const SizedBox(
               height: 20,
             ),
-            Table(
-              columnWidths: const {
-                0: FlexColumnWidth(1),
-                1: FlexColumnWidth(1),
-              },
+            Row(
               children: [
-                TableRow(children: [
-                  const TableText(text: 'User Name'),
-                  TableText(text: user.name),
-                ]),
-                TableRow(children: [
-                  const TableText(text: 'Job Title'),
-                  TableText(text: user.jobTitle),
-                ]),
-                TableRow(children: [
-                  const TableText(text: 'Phone'),
-                  TableText(text: user.phone),
-                ]),
-                TableRow(children: [
-                  const TableText(text: 'Email'),
-                  TableText(text: user.email),
-                ]),
+                const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Image(
+                      image: AssetImage('assets/icons/job.png'),
+                    )),
+                const SizedBox(
+                  width: 16,
+                ),
+                Text(
+                  'Job Title ',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: Colors.black),
+                ),
+                Text(
+                  user.jobTitle,
+                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                width: 20,
+                height: 20,
+                child: Image(
+                  image: AssetImage('assets/icons/phone.png'),
+                )),
+                const SizedBox(
+                  width: 16,
+                ),
+                Text(
+                  'Phone ',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: Colors.black),
+                ),
+                Text(
+                  user.phone,
+                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Image(
+                      image: AssetImage('assets/icons/gmail.png'),
+                    )),
+                const SizedBox(
+                  width: 16,
+                ),
+                Text(
+                  'Email ',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: Colors.black),
+                ),
+                Text(
+                  user.email,
+                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             const SizedBox(

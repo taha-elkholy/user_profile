@@ -68,11 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
                   CircleAvatar(
-                    radius: 50,
+                    radius: 80,
                     backgroundColor: Colors.white,
                     backgroundImage: const Image(
                       image: AssetImage(
@@ -82,14 +79,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ).image,
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Text(
                       'Login',
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                   ),
                   const SizedBox(
@@ -109,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             return null;
                           },
                           inputType: TextInputType.emailAddress,
-                          hint: 'Email',
+                          label: 'Email',
                           icon: Icons.email,
                         ),
                         const SizedBox(
@@ -126,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     return null;
                                   },
                                   inputType: TextInputType.visiblePassword,
-                                  hint: 'Password',
+                                  label: 'Password',
                                   icon: Icons.lock,
                                   obscureText: !_isPasswordShown,
                                   suffixIcon: _isPasswordShown
@@ -175,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Don\'t Have Account? SignUp',
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     onPressed: () {
                       navigateAndFinish(

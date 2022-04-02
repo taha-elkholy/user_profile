@@ -47,16 +47,16 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocListener<LoginCubit, LoginStates>(
         listener: (context, state) {
           state.maybeWhen(
-            loaded: (){
+            loaded: () {
               navigateAndFinish(
                 context: context,
                 screen: const ProfileScreen(),
               );
             },
-              error: (error){
-               showSnackBar(context: context, content: error);
-              },
-              orElse: (){},
+            error: (error) {
+              showSnackBar(context: context, content: error);
+            },
+            orElse: () {},
           );
         },
         child: Scaffold(
@@ -141,29 +141,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         BlocBuilder<LoginCubit, LoginStates>(
                           builder: (context, state) {
                             return state.maybeWhen(
-                                loading: () => const AppProgressIndicator(),
-                                loaded: () => const AppProgressIndicator(),
-                                orElse: () => AppElevatedButton(
-                                    onPressed: () {
-                                      if (formKey.currentState!
-                                          .validate()) {
-                                        FocusManager.instance.primaryFocus?.unfocus();
-                                        BlocProvider.of<LoginCubit>(
-                                                context)
-                                            .login(
-                                                email: emailController
-                                                    .text
-                                                    .trim(),
-                                                password:
-                                                    passwordController
-                                                        .text);
-                                      }
-                                    },
-                                    text: 'Login'),);
+                              loading: () => const AppProgressIndicator(),
+                              loaded: () => const AppProgressIndicator(),
+                              orElse: () => AppElevatedButton(
+                                  onPressed: () {
+                                    if (formKey.currentState!.validate()) {
+                                      FocusManager.instance.primaryFocus
+                                          ?.unfocus();
+                                      BlocProvider.of<LoginCubit>(context)
+                                          .login(
+                                              email:
+                                                  emailController.text.trim(),
+                                              password:
+                                                  passwordController.text);
+                                    }
+                                  },
+                                  text: 'Login'),
+                            );
                           },
-                        ),
-                        const SizedBox(
-                          height: 20,
                         ),
                       ],
                     ),
@@ -172,7 +167,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Don\'t Have Account? SignUp',
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(color: Colors.pink),
                     ),
                     onPressed: () {
                       navigateAndFinish(

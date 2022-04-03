@@ -14,20 +14,20 @@ ThemeData appThemeLight = ThemeData(
       statusBarIconBrightness: Brightness.dark,
     ),
   ),
-  textTheme: const TextTheme(
-      headline1: TextStyle(
+  textTheme: TextTheme(
+      headline1: const TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      subtitle1: TextStyle(
+      subtitle1: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
       bodyText1: TextStyle(
         fontSize: 16,
-        color: Colors.black,
+        color: Colors.black.withOpacity(.8),
       )),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,

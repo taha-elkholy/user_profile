@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:user_profile/core/style/colors.dart';
 
 ThemeData appThemeLight = ThemeData(
-  primarySwatch: Colors.pink,
+  primarySwatch: customPink,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
     elevation: 0,
@@ -31,7 +32,7 @@ ThemeData appThemeLight = ThemeData(
       )),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: Colors.pink.withOpacity(.3),
+    fillColor: customPink.withOpacity(.2),
     border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: const BorderSide(width: 2)),

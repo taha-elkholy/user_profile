@@ -8,8 +8,8 @@ import 'package:user_profile/core/helpers/helpers.dart';
 import 'package:user_profile/core/widgets/app_elevated_button.dart';
 import 'package:user_profile/core/widgets/app_progress_indicator.dart';
 import 'package:user_profile/core/widgets/app_text_form_field.dart';
+import 'package:user_profile/core/widgets/network_image.dart';
 import 'package:user_profile/features/auth/domain/entities/user.dart';
-import 'package:user_profile/features/profile/presentation/widgets/network_image.dart';
 import 'package:user_profile/features/update_profile/presentation/bloc/update_profile_cubit/update_profile_cubit.dart';
 import 'package:user_profile/features/update_profile/presentation/bloc/update_profile_cubit/update_profile_states.dart';
 
@@ -23,7 +23,6 @@ class UpdateProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Update Profile',
-          style: TextStyle(color: Colors.deepOrange),
         ),
       ),
       body: UpdateProfileBody(

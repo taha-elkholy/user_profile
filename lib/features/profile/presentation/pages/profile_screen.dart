@@ -4,11 +4,11 @@ import 'package:user_profile/core/di/injector/injector.dart';
 import 'package:user_profile/core/helpers/helpers.dart';
 import 'package:user_profile/core/widgets/app_elevated_button.dart';
 import 'package:user_profile/core/widgets/app_progress_indicator.dart';
+import 'package:user_profile/core/widgets/network_image.dart';
 import 'package:user_profile/features/auth/domain/entities/user.dart';
 import 'package:user_profile/features/auth/presentation/pages/login_screen.dart';
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_cubit.dart';
 import 'package:user_profile/features/profile/presentation/bloc/profile_cubit/profile_states.dart';
-import 'package:user_profile/features/profile/presentation/widgets/network_image.dart';
 import 'package:user_profile/features/update_profile/presentation/pages/update_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -31,7 +31,6 @@ class ProfileScreen extends StatelessWidget {
             appBar: AppBar(
               title: const Text(
                 'profile',
-                style: TextStyle(color: Colors.black),
               ),
               actions: [
                 IconButton(
@@ -148,15 +147,11 @@ class ProfileBody extends StatelessWidget {
                 ),
                 Text(
                   'Job Title ',
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
                   user.jobTitle,
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ],
             ),
@@ -166,25 +161,21 @@ class ProfileBody extends StatelessWidget {
             Row(
               children: [
                 const SizedBox(
-                width: 20,
-                height: 20,
-                child: Image(
-                  image: AssetImage('assets/icons/phone.png'),
-                )),
+                    width: 20,
+                    height: 20,
+                    child: Image(
+                      image: AssetImage('assets/icons/phone.png'),
+                    )),
                 const SizedBox(
                   width: 16,
                 ),
                 Text(
                   'Phone ',
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
                   user.phone,
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ],
             ),
@@ -204,15 +195,11 @@ class ProfileBody extends StatelessWidget {
                 ),
                 Text(
                   'Email ',
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
                   user.email,
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ],
             ),

@@ -1,16 +1,14 @@
 # user_profile
 
-A new Flutter project.
+A Flutter Project built to be an application on the TDD Architecture Pattern
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+* API Integration
+* User Authentication Login, Register and Logout
+* View User Data
+* Update User Profile
+* Upload User Image on: https://imgbb.com/upload
+* Dribble UI Link: https://dribbble.com/shots/16120514-Profile-card
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

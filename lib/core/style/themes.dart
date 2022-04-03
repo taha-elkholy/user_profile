@@ -31,8 +31,8 @@ ThemeData appThemeLight = ThemeData(
         color: Colors.black.withOpacity(.8),
       )),
   inputDecorationTheme: InputDecorationTheme(
-    filled: true,
-    fillColor: customPink.withOpacity(.2),
+    //filled: true,
+    //fillColor: customPink.withOpacity(.1),
     border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: const BorderSide(width: 2)),

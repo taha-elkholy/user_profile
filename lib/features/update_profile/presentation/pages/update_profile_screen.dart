@@ -80,37 +80,89 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: StatefulBuilder(builder: (context, innerState) {
-                    return (userImage != null)
-                        ? Container(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              image: DecorationImage(
-                                  image: Image.file(userImage!).image,
-                                  fit: BoxFit.cover),
-                            ),
-                          )
-                        : MyNetworkImage(
-                            url: widget.user.image,
-                          );
-                  }),
-                ),
-                IconButton(
-                    onPressed: () {
-                      pickImage();
-                    },
-                    icon: const Icon(Icons.camera_alt_outlined))
-              ],
+            SizedBox(
+              height: 200,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 150,
+                    child: Card(
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: const Image(
+                        image: AssetImage('assets/images/bg.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Stack(
+                      alignment: AlignmentDirectional.bottomEnd,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60),
+                              border:
+                                  Border.all(color: Colors.white, width: 4)),
+                          child:
+                              StatefulBuilder(builder: (context, innerState) {
+                            return (userImage != null)
+                                ? Container(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      image: DecorationImage(
+                                          image: Image.file(userImage!).image,
+                                          fit: BoxFit.cover),
+                                    ),
+                                  )
+                                : MyNetworkImage(
+                                    url: widget.user.image,
+                                  );
+                          }),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            pickImage();
+                          },
+                          icon: const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: Image(
+                                color: Colors.grey,
+                                image: AssetImage('assets/icons/camera.png'),
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    child: IconButton(
+                      onPressed: () {
+                        showSnackBar(
+                            context: context, content: 'Not Available Yet');
+                      },
+                      icon: const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: Image(
+                            color: Colors.grey,
+                            image: AssetImage('assets/icons/camera.png'),
+                          )),
+                    ),
+                  )
+                ],
+              ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             AppTextFormField(
               controller: nameController,
